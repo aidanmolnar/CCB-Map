@@ -1,0 +1,32 @@
+var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+maxZoom: 19,
+attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+});
+
+var baseLayers = {
+	'OpenStreetMap': osm,
+};
+{{range $i, $val := .layer_vars}}
+var {{$val}} = L.layerGroup(); {{end}}
+
+var map = L.map('map', {
+    center: [43.8, -71.5724],
+    zoom: 8,
+    layers: [osm {{range $i, $val := .layer_vars}}, {{$val}}{{end}}]
+});
+{{ $layers := .layers }}
+var overlays = { {{range $i, $var := .layer_vars}} 
+    '{{index $layers $i}}': {{$var}}, {{end}}
+};
+
+var layerControl = L.control.layers(baseLayers, overlays).addTo(map);
+
+map.on("overlayremove", function(o) {
+    {{range $i, $val := .layer_vars}}if (map.hasLayer({{$val}})) {
+        map.removeLayer({{$val}});
+        map.addLayer({{$val}});
+    } 
+    {{end}}
+});
+
+

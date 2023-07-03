@@ -7,50 +7,50 @@ var baseLayers = {
 	'OpenStreetMap': osm,
 };
 
-var Draft_SafeSpace = L.layerGroup(); 
 var Draft_Other = L.layerGroup(); 
+var Draft_SafeSpace = L.layerGroup(); 
 var Draft_Kolsch = L.layerGroup(); 
-var Cans_SafeSpace = L.layerGroup(); 
 var Cans_Other = L.layerGroup(); 
+var Cans_SafeSpace = L.layerGroup(); 
 var Cans_Kolsch = L.layerGroup(); 
 
 var map = L.map('map', {
     center: [43.8, -71.5724],
     zoom: 8,
-    layers: [osm , Draft_SafeSpace, Draft_Other, Draft_Kolsch, Cans_SafeSpace, Cans_Other, Cans_Kolsch]
+    layers: [osm , Draft_Other, Draft_SafeSpace, Draft_Kolsch, Cans_Other, Cans_SafeSpace, Cans_Kolsch]
 });
 
 var overlays = {  
-    'Draft Safe Space': Draft_SafeSpace,  
     'Draft Other': Draft_Other,  
+    'Draft Safe Space': Draft_SafeSpace,  
     'Draft Kolsch': Draft_Kolsch,  
-    'Cans Safe Space': Cans_SafeSpace,  
     'Cans Other': Cans_Other,  
+    'Cans Safe Space': Cans_SafeSpace,  
     'Cans Kolsch': Cans_Kolsch, 
 };
 
 var layerControl = L.control.layers(baseLayers, overlays).addTo(map);
 
 map.on("overlayremove", function(o) {
-    if (map.hasLayer(Draft_SafeSpace)) {
-        map.removeLayer(Draft_SafeSpace);
-        map.addLayer(Draft_SafeSpace);
-    } 
     if (map.hasLayer(Draft_Other)) {
         map.removeLayer(Draft_Other);
         map.addLayer(Draft_Other);
+    } 
+    if (map.hasLayer(Draft_SafeSpace)) {
+        map.removeLayer(Draft_SafeSpace);
+        map.addLayer(Draft_SafeSpace);
     } 
     if (map.hasLayer(Draft_Kolsch)) {
         map.removeLayer(Draft_Kolsch);
         map.addLayer(Draft_Kolsch);
     } 
-    if (map.hasLayer(Cans_SafeSpace)) {
-        map.removeLayer(Cans_SafeSpace);
-        map.addLayer(Cans_SafeSpace);
-    } 
     if (map.hasLayer(Cans_Other)) {
         map.removeLayer(Cans_Other);
         map.addLayer(Cans_Other);
+    } 
+    if (map.hasLayer(Cans_SafeSpace)) {
+        map.removeLayer(Cans_SafeSpace);
+        map.addLayer(Cans_SafeSpace);
     } 
     if (map.hasLayer(Cans_Kolsch)) {
         map.removeLayer(Cans_Kolsch);
@@ -102,8 +102,8 @@ marker46 = L.marker([43.073721, -70.764516]).addTo(Cans_Other).bindPopup("Lexies
 marker50 = L.marker([43.071070, -70.762155]).addTo(Draft_SafeSpace).bindPopup("Jumpin Jays Fish Cafe<br>1 A Middle Street,Portsmouth,03802<br>Safe Space Draft<br>Last Updated 06-2023");
 marker58 = L.marker([42.895634, -70.885526]).addTo(Cans_SafeSpace).bindPopup("Rt 107 Beverages<br>1 Batchelder Road,Seabrook,03874<br>Safe Space Can<br>Last Updated 06-2023");
 marker59 = L.marker([42.879312, -70.869270]).addTo(Cans_SafeSpace).addTo(Cans_Kolsch).addTo(Cans_Other).bindPopup("The City Tobacco & Bev 4<br>167 Lafayette Road,Seabrook,03874<br>Safe Space Can, Kolsch Can, Pandora's Kettle Can<br>Last Updated 06-2023");
-marker60 = L.marker([42.966581, -70.836267]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Prost<br>44 Lafayette Road/Unit 12,North Hampton,03862<br>Jalapeno Cream Ale Can, Double Safe Space Can, Safe Space Can, Four Rivers Red Can, Live Free Lager Can<br>Last Updated 06-2023");
-marker64 = L.marker([42.893194, -70.874379]).addTo(Cans_Other).addTo(Cans_Kolsch).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("The City Seabrook<br>621 Lafayette Road,Seabrook,03874<br>Live Free Lager Can, Kolsch Can, Govnah Can, Safe Space Can<br>Last Updated 06-2023");
+marker60 = L.marker([42.966581, -70.836267]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Prost<br>44 Lafayette Road/Unit 12,North Hampton,03862<br>Jalapeno Cream Ale Can, Double Safe Space Can, Safe Space Can, Four Rivers Red Can, Live Free Lager Can<br>Last Updated 06-2023");
+marker64 = L.marker([42.893194, -70.874379]).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Kolsch).bindPopup("The City Seabrook<br>621 Lafayette Road,Seabrook,03874<br>Live Free Lager Can, Kolsch Can, Govnah Can, Safe Space Can<br>Last Updated 06-2023");
 marker67 = L.marker([43.036156, -70.784958]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Mckinnons Market & Shop<br>2454 Lafayette Road,Portsmouth,03801<br>Pandora's Kettle Can, Safe Space Can<br>Last Updated 06-2023");
 marker71 = L.marker([43.296367, -70.992503]).addTo(Cans_SafeSpace).bindPopup("Nouria/Washington St<br>130 Washington Street,Rochester,03867<br>Safe Space Can<br>Last Updated 06-2023");
 marker72 = L.marker([43.304789, -70.977388]).addTo(Draft_Other).bindPopup("Revolution Taproom & Gril<br>61 North Main Street,Rochester,03867<br>Pandora's Kettle Draft<br>Last Updated 06-2023");
@@ -119,13 +119,13 @@ marker96 = L.marker([43.192744, -70.872777]).addTo(Cans_SafeSpace).bindPopup("Do
 marker107 = L.marker([43.165571, -70.846463]).addTo(Cans_Other).bindPopup("Tendercrop Farm<br>123 Dover Point Road,Dover,03820<br>Govnah Can<br>Last Updated 06-2023");
 marker108 = L.marker([43.071420, -70.770417]).addTo(Cans_SafeSpace).bindPopup("Dmart<br>565 Islington St,Portsmouth,03801<br>Safe Space Can<br>Last Updated 06-2023");
 marker110 = L.marker([45.051603, -71.386088]).addTo(Draft_SafeSpace).bindPopup("1840 Restaurant<br>8 Back Lake Road,Pittsburg,03592<br>Safe Space Draft<br>Last Updated 06-2023");
-marker111 = L.marker([44.909592, -71.490244]).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Laperles Iga Supermarket<br>64 Trooper Leslie Lord Hw,Colebrook,03576<br>Live Free Lager Can, Safe Space Can, Four Rivers Red Can, Conquered Can<br>Last Updated 06-2023");
+marker111 = L.marker([44.909592, -71.490244]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Laperles Iga Supermarket<br>64 Trooper Leslie Lord Hw,Colebrook,03576<br>Live Free Lager Can, Safe Space Can, Four Rivers Red Can, Conquered Can<br>Last Updated 06-2023");
 marker113 = L.marker([45.065637, -71.343783]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Buck Rub<br>2253 North Main Street,Pittsburg,03592<br>Safe Space Can, Live Free Lager Can, Conquered Can<br>Last Updated 06-2023");
 marker116 = L.marker([44.781547, -71.137276]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Ll Cote<br>25 Main Street,Errol,03579<br>Govnah Can, Safe Space Can<br>Last Updated 06-2023");
 marker117 = L.marker([44.781612, -71.139700]).addTo(Cans_Other).bindPopup("Backwoods Tavern<br>39 Colebrook Road,Errol,03579<br>Town Pound Ported Can<br>Last Updated 06-2023");
 marker118 = L.marker([45.104050, -71.277448]).addTo(Cans_SafeSpace).bindPopup("Treats & Treasurers<br>3316 No Main St.,Pittsburg,03592<br>Safe Space Can<br>Last Updated 06-2023");
 marker119 = L.marker([44.599276, -71.513144]).addTo(Cans_SafeSpace).bindPopup("North Country Shop & Save<br>25 State Street,Groveton,03582<br>Safe Space Can<br>Last Updated 06-2023");
-marker124 = L.marker([44.493718, -71.572591]).addTo(Draft_Other).addTo(Draft_SafeSpace).bindPopup("Scorpios Pizza & Sports<br>180 Main Street,Lancaster,03584<br>Four Rivers Red Draft, Safe Space Draft<br>Last Updated 06-2023");
+marker124 = L.marker([44.493718, -71.572591]).addTo(Draft_SafeSpace).addTo(Draft_Other).bindPopup("Scorpios Pizza & Sports<br>180 Main Street,Lancaster,03584<br>Four Rivers Red Draft, Safe Space Draft<br>Last Updated 06-2023");
 marker128 = L.marker([43.584564, -71.207917]).addTo(Cans_SafeSpace).bindPopup("Wolfeboro Corner Country<br>148 South Main Street,Wolfeboro,03894<br>Safe Space Can<br>Last Updated 06-2023");
 marker129 = L.marker([43.500604, -70.962969]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Ira Millers General Sto<br>48 Milton Mills,Milton Mills,03852<br>Safe Space Can, Govnah Can<br>Last Updated 06-2023");
 marker133 = L.marker([43.400237, -71.001969]).addTo(Cans_SafeSpace).bindPopup("Milton Mart<br>16 Commerce Way,Milton,03872<br>Safe Space Can<br>Last Updated 06-2023");
@@ -145,7 +145,7 @@ marker159 = L.marker([43.389761, -71.065062]).addTo(Cans_SafeSpace).addTo(Cans_O
 marker161 = L.marker([43.579441, -71.198072]).addTo(Draft_SafeSpace).bindPopup("Morrisseys Front Porch<br>286 South Main Street,Wolfeboro,03894<br>Safe Space Draft<br>Last Updated 06-2023");
 marker170 = L.marker([44.105163, -71.178720]).addTo(Cans_SafeSpace).bindPopup("Jellystone Camp Resort<br>83 Glen Ellis Campground,Glen,03838<br>Safe Space Can<br>Last Updated 06-2023");
 marker171 = L.marker([44.055821, -71.130566]).addTo(Cans_SafeSpace).bindPopup("Cobble Pond Farms<br>2806 White Mtn Hwy,North Conway,03860<br>Safe Space Can<br>Last Updated 06-2023");
-marker174 = L.marker([44.076411, -71.138344]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Vista Bev & Market<br>10 Hurricane Mtn Road,Intervale,03845<br>Govnah Can, Jalapeno Cream Ale Can, Pandora's Kettle Can, Safe Space Can<br>Last Updated 06-2023");
+marker174 = L.marker([44.076411, -71.138344]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Vista Bev & Market<br>10 Hurricane Mtn Road,Intervale,03845<br>Govnah Can, Jalapeno Cream Ale Can, Pandora's Kettle Can, Safe Space Can<br>Last Updated 06-2023");
 marker175 = L.marker([44.055456, -71.131026]).addTo(Cans_SafeSpace).bindPopup("Flatbread Co/No Conway<br>2760 White Mtn Hwy Po2475,North Conway,03860<br>Safe Space Can<br>Last Updated 06-2023");
 marker177 = L.marker([44.111888, -71.181095]).addTo(Cans_SafeSpace).bindPopup("Glen Beverage Company<br>779 Nh 16,Glen,03838<br>Safe Space Can<br>Last Updated 06-2023");
 marker179 = L.marker([44.024078, -71.114132]).addTo(Cans_SafeSpace).bindPopup("Beer And Wine Nation<br>2 Common Court Unit,North Conway,03860<br>Safe Space Can<br>Last Updated 06-2023");
@@ -183,10 +183,10 @@ marker246 = L.marker([43.758062, -71.687299]).addTo(Cans_SafeSpace).bindPopup("C
 marker247 = L.marker([43.655543, -71.498433]).addTo(Cans_SafeSpace).bindPopup("Meredith Station<br>294 Daniel Webster Hwy,Meredith,03253<br>Safe Space Can<br>Last Updated 06-2023");
 marker249 = L.marker([43.656145, -71.500180]).addTo(Cans_Kolsch).bindPopup("Hermit Woods Inc.<br>72 Main Street,Meredith,03252<br>Kolsch Can<br>Last Updated 06-2023");
 marker253 = L.marker([43.652261, -71.497815]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Case N Keg Meredith<br>5 Mill Street,Meredith,03253<br>Govnah Can, Safe Space Can<br>Last Updated 06-2023");
-marker255 = L.marker([44.302804, -71.801481]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Shaws-Littleton 2601<br>625 Meadow Street,Littleton,03561<br>Safe Space Can, Govnah Can<br>Last Updated 06-2023");
+marker255 = L.marker([44.302804, -71.801481]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Shaws-Littleton 2601<br>625 Meadow Street,Littleton,03561<br>Safe Space Can, Govnah Can<br>Last Updated 06-2023");
 marker263 = L.marker([44.292584, -71.760521]).addTo(Draft_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Little Town Brews<br>42 Main Street,Littleton,03561<br>Safe Space Draft, Four Rivers Red Can, Double Safe Space Can<br>Last Updated 06-2023");
 marker267 = L.marker([43.598408, -71.747607]).addTo(Cans_SafeSpace).bindPopup("Crazy Cat Winery<br>365 Lake Street,Bristol,03222<br>Safe Space Can<br>Last Updated 06-2023");
-marker268 = L.marker([43.455874, -71.660035]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Roberts Market<br>2 Hill Road,West Franklin,03235<br>Safe Space Can, Pandora's Kettle Can<br>Last Updated 06-2023");
+marker268 = L.marker([43.455874, -71.660035]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Roberts Market<br>2 Hill Road,West Franklin,03235<br>Safe Space Can, Pandora's Kettle Can<br>Last Updated 06-2023");
 marker270 = L.marker([43.597650, -71.726970]).addTo(Cans_SafeSpace).bindPopup("Rite Aid/Bristol 4166<br>360 Summer Street,Bristol,03222<br>Safe Space Can<br>Last Updated 06-2023");
 marker271 = L.marker([43.626010, -71.768010]).addTo(Draft_SafeSpace).bindPopup("The Travelers Rest<br>22 Hemp Hill Rd,Bristol,03222<br>Safe Space Draft<br>Last Updated 06-2023");
 marker273 = L.marker([43.694467, -71.806516]).addTo(Cans_SafeSpace).bindPopup("Hebron Village Store<br>7 Northshore Road,Hebron,03241<br>Safe Space Can<br>Last Updated 06-2023");
@@ -208,7 +208,7 @@ marker304 = L.marker([44.030542, -71.686473]).addTo(Draft_SafeSpace).bindPopup("
 marker305 = L.marker([44.043034, -71.670269]).addTo(Draft_SafeSpace).bindPopup("Gypsy Cafe<br>117 Main Street,Lincoln,03251<br>Safe Space Draft<br>Last Updated 06-2023");
 marker313 = L.marker([44.049449, -71.659647]).addTo(Draft_SafeSpace).bindPopup("Pub32 Llc<br>264 Main Street/Unit 14,Lincoln,03251<br>Safe Space Draft<br>Last Updated 06-2023");
 marker317 = L.marker([44.029724, -71.686118]).addTo(Cans_SafeSpace).bindPopup("Ks Market<br>85 Main Street,Lincoln,03251<br>Safe Space Can<br>Last Updated 06-2023");
-marker318 = L.marker([44.034129, -71.686678]).addTo(Cans_SafeSpace).addTo(Cans_Kolsch).addTo(Cans_Other).bindPopup("Waynes Market<br>173 Main Street,North Woodstock,03262<br>Kolsch Can, Double Safe Space Can, Safe Space Can<br>Last Updated 06-2023");
+marker318 = L.marker([44.034129, -71.686678]).addTo(Cans_Kolsch).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Waynes Market<br>173 Main Street,North Woodstock,03262<br>Kolsch Can, Double Safe Space Can, Safe Space Can<br>Last Updated 06-2023");
 marker320 = L.marker([44.280461, -71.688655]).addTo(Cans_SafeSpace).bindPopup("Bethlehem Village Store<br>2065 Main Street,Bethlehem,03574<br>Safe Space Can<br>Last Updated 06-2023");
 marker322 = L.marker([44.038175, -71.674741]).addTo(Cans_SafeSpace).bindPopup("7-11 Lincoln 37390J<br>36 Main Street,Lincoln,03251<br>Safe Space Can<br>Last Updated 06-2023");
 marker323 = L.marker([43.850057, -71.666250]).addTo(Cans_SafeSpace).bindPopup("Chesleys Mini Mart Inc.<br>2122 Us Route 3,Campton,03223<br>Safe Space Can<br>Last Updated 06-2023");
@@ -219,7 +219,7 @@ marker332 = L.marker([43.016993, -71.449648]).addTo(Cans_SafeSpace).bindPopup("P
 marker334 = L.marker([42.990751, -71.446518]).addTo(Cans_SafeSpace).bindPopup("Us Mart<br>540 Hall Street,Manchester,03103<br>Safe Space Can<br>Last Updated 06-2023");
 marker335 = L.marker([43.006556, -71.461429]).addTo(Cans_SafeSpace).bindPopup("Bunnys Superette<br>75 Webster St,Manchester,03104<br>Safe Space Can<br>Last Updated 06-2023");
 marker338 = L.marker([42.986327, -71.463539]).addTo(Cans_SafeSpace).bindPopup("Quality Fuel Mart<br>570 Elm Street,Manchester,03103<br>Safe Space Can<br>Last Updated 06-2023");
-marker353 = L.marker([42.987135, -71.417482]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Kwik Stop/Hanover St<br>1095 Hanover Street,Manchester,03104<br>Safe Space Can, Govnah Can<br>Last Updated 06-2023");
+marker353 = L.marker([42.987135, -71.417482]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Kwik Stop/Hanover St<br>1095 Hanover Street,Manchester,03104<br>Safe Space Can, Govnah Can<br>Last Updated 06-2023");
 marker356 = L.marker([42.984974, -71.413354]).addTo(Cans_SafeSpace).bindPopup("Candia Road Convenience<br>836 Candia Rd,Manchester,03109<br>Safe Space Can<br>Last Updated 06-2023");
 marker358 = L.marker([42.994754, -70.972304]).addTo(Cans_SafeSpace).bindPopup("Nouria Exeter<br>158 Epping Road,Exeter,03833<br>Safe Space Can<br>Last Updated 06-2023");
 marker359 = L.marker([43.059292, -71.274545]).addTo(Cans_SafeSpace).bindPopup("Dc Mobil<br>179 Raymond Road,Candia,03034<br>Safe Space Can<br>Last Updated 06-2023");
@@ -227,10 +227,10 @@ marker362 = L.marker([43.035264, -71.161747]).addTo(Draft_SafeSpace).bindPopup("
 marker364 = L.marker([42.956609, -71.256656]).addTo(Cans_Other).bindPopup("Chester General Store<br>2 Haverhill Road,Chester,03036<br>Pandora's Kettle Can<br>Last Updated 06-2023");
 marker377 = L.marker([42.981596, -70.958070]).addTo(Cans_Other).bindPopup("Gerrys Variety<br>66 Lincoln Street,Exeter,03833<br>Four Rivers Red Can<br>Last Updated 06-2023");
 marker378 = L.marker([43.023441, -71.364299]).addTo(Draft_SafeSpace).bindPopup("Auburn Tavern Llc<br>346 Hooksett Road,Auburn,03032<br>Safe Space Draft<br>Last Updated 06-2023");
-marker380 = L.marker([43.042199, -71.305076]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Candia First Stoppe<br>285 Old Candia Road,Candia,03034<br>Safe Space Can, Pandora's Kettle Can, Double Safe Space Can<br>Last Updated 06-2023");
+marker380 = L.marker([43.042199, -71.305076]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Candia First Stoppe<br>285 Old Candia Road,Candia,03034<br>Safe Space Can, Pandora's Kettle Can, Double Safe Space Can<br>Last Updated 06-2023");
 marker382 = L.marker([43.004103, -71.347505]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Auburn Supermarket<br>9 Chester Road,Auburn,03032<br>Safe Space Can, Govnah Can<br>Last Updated 06-2023");
 marker384 = L.marker([43.051353, -71.055382]).addTo(Draft_SafeSpace).bindPopup("Tellys Pizza<br>Route 125,Epping,03042<br>Safe Space Draft<br>Last Updated 06-2023");
-marker386 = L.marker([43.034150, -71.073060]).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Greg & Janes Beer & Wine<br>63 Main Street,Epping,03042<br>Conquered Can, Live Free Lager Can, Double Safe Space Can, Safe Space Can, Govnah Can<br>Last Updated 06-2023");
+marker386 = L.marker([43.034150, -71.073060]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Greg & Janes Beer & Wine<br>63 Main Street,Epping,03042<br>Conquered Can, Live Free Lager Can, Double Safe Space Can, Safe Space Can, Govnah Can<br>Last Updated 06-2023");
 marker387 = L.marker([42.969188, -71.453637]).addTo(Cans_SafeSpace).bindPopup("Holy Smokes Inc<br>297 South Willow Street,Manchester,03103<br>Safe Space Can<br>Last Updated 06-2023");
 marker391 = L.marker([42.980131, -71.491968]).addTo(Cans_SafeSpace).bindPopup("Everest Convenience Store<br>18 Rockland Avenue,Manchester,03102<br>Safe Space Can<br>Last Updated 06-2023");
 marker392 = L.marker([43.010793, -71.494032]).addTo(Cans_Other).bindPopup("Crosstown Convenience<br>995 Goffstown Road,Manchester,03102<br>Jalapeno Cream Ale Can<br>Last Updated 06-2023");
@@ -257,7 +257,7 @@ marker433 = L.marker([42.990723, -71.461019]).addTo(Cans_SafeSpace).bindPopup("C
 marker435 = L.marker([42.990595, -71.465232]).addTo(Draft_SafeSpace).bindPopup("Strange Brew Tavern<br>88 Market St.,Manchester,03101<br>Safe Space Draft<br>Last Updated 06-2023");
 marker437 = L.marker([42.995070, -71.463006]).addTo(Draft_SafeSpace).bindPopup("Farm Bar + Grille  (The)<br>1181 Elm Street,Manchester,03101<br>Safe Space Draft<br>Last Updated 06-2023");
 marker442 = L.marker([43.223459, -71.255001]).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Heritage Corner Market<br>1380 1st Nh Turnpike,Northwood,03261<br>Govnah Can, Safe Space Can, Four Rivers Red Can<br>Last Updated 06-2023");
-marker444 = L.marker([43.219051, -71.499921]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Smokers Choice Iii<br>184 Loudon Rd,Concord,03301<br>Live Free Lager Can, Pandora's Kettle Can, Safe Space Can<br>Last Updated 06-2023");
+marker444 = L.marker([43.219051, -71.499921]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Smokers Choice Iii<br>184 Loudon Rd,Concord,03301<br>Live Free Lager Can, Pandora's Kettle Can, Safe Space Can<br>Last Updated 06-2023");
 marker445 = L.marker([43.117561, -71.441581]).addTo(Cans_SafeSpace).bindPopup("Nouria Allenstown<br>3 Allenstown Road,Allenstown,03275<br>Safe Space Can<br>Last Updated 06-2023");
 marker446 = L.marker([43.190518, -71.512395]).addTo(Cans_SafeSpace).bindPopup("Red Blazer Catering<br>72 Manchester Street,Concord,03301<br>Safe Space Can<br>Last Updated 06-2023");
 marker447 = L.marker([43.151359, -71.407742]).addTo(Cans_SafeSpace).bindPopup("Suncook River Conv<br>270 Pinewood Road,Allenstown,03275<br>Safe Space Can<br>Last Updated 06-2023");
@@ -266,7 +266,7 @@ marker450 = L.marker([43.190518, -71.512395]).addTo(Draft_SafeSpace).bindPopup("
 marker451 = L.marker([43.030161, -71.436724]).addTo(Cans_SafeSpace).bindPopup("Hooksett A-1 Market<br>1115 Hooksett Road,Hooksett,03106<br>Safe Space Can<br>Last Updated 06-2023");
 marker454 = L.marker([43.221842, -71.496489]).addTo(Draft_SafeSpace).bindPopup("Tgi Fridays 650<br>221 Loudon Road,Concord,03301<br>Safe Space Draft<br>Last Updated 06-2023");
 marker456 = L.marker([43.212927, -71.513184]).addTo(Cans_SafeSpace).bindPopup("Kwik Stop/Loudon Road<br>110 Loudon Road,Concord,03301<br>Safe Space Can<br>Last Updated 06-2023");
-marker459 = L.marker([43.141775, -71.230736]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Mr Mikes/Deerfield<br>2 Mountain Road,Deerfield,03037<br>Govnah Can, Safe Space Can<br>Last Updated 06-2023");
+marker459 = L.marker([43.141775, -71.230736]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Mr Mikes/Deerfield<br>2 Mountain Road,Deerfield,03037<br>Govnah Can, Safe Space Can<br>Last Updated 06-2023");
 marker461 = L.marker([43.040074, -71.432998]).addTo(Cans_SafeSpace).bindPopup("Space Center<br>51 Zapora Drive,Hooksett,03106<br>Safe Space Can<br>Last Updated 06-2023");
 marker463 = L.marker([43.179774, -71.488505]).addTo(Cans_Other).addTo(Cans_Kolsch).bindPopup("Wineing Butcher<br>16 Sheep Davis Road,Pembroke,03275<br>Four Rivers Red Can, Kolsch Can<br>Last Updated 06-2023");
 marker464 = L.marker([43.133258, -71.240414]).addTo(Draft_SafeSpace).bindPopup("Lazy Lion<br>4 North Road,Deerfield,03037<br>Safe Space Draft<br>Last Updated 06-2023");
@@ -283,20 +283,20 @@ marker479 = L.marker([43.569288, -71.345862]).addTo(Cans_SafeSpace).bindPopup("E
 marker482 = L.marker([43.611678, -71.463257]).addTo(Cans_SafeSpace).bindPopup("Akwa Marina Beach Bar Ii<br>95 Centenary Avenue,Laconia,03246<br>Safe Space Can<br>Last Updated 06-2023");
 marker484 = L.marker([43.562364, -71.450128]).addTo(Cans_SafeSpace).bindPopup("Kwik Stop/Laconia<br>1355 Union Avenue,Laconia,03246<br>Safe Space Can<br>Last Updated 06-2023");
 marker493 = L.marker([43.547797, -71.407081]).addTo(Cans_SafeSpace).bindPopup("Gilford Village Store<br>7 Belknap Mountain Road,Gilford,03249<br>Safe Space Can<br>Last Updated 06-2023");
-marker494 = L.marker([43.528221, -71.470059]).addTo(Draft_SafeSpace).addTo(Draft_Other).bindPopup("Defiant Records Llc<br>609 Main Street,Laconia,03246<br>Four Rivers Red Draft, Safe Space Draft<br>Last Updated 06-2023");
+marker494 = L.marker([43.528221, -71.470059]).addTo(Draft_Other).addTo(Draft_SafeSpace).bindPopup("Defiant Records Llc<br>609 Main Street,Laconia,03246<br>Four Rivers Red Draft, Safe Space Draft<br>Last Updated 06-2023");
 marker498 = L.marker([43.562145, -71.476906]).addTo(Cans_SafeSpace).bindPopup("Laconia Country Club Inc<br>607 Elm Street,Laconia,03246<br>Safe Space Can<br>Last Updated 06-2023");
 marker499 = L.marker([43.568638, -71.448511]).addTo(Cans_SafeSpace).bindPopup("The Wineing Butcher Llc<br>28 Weirs Blvd,Gilford,03249<br>Safe Space Can<br>Last Updated 06-2023");
 marker501 = L.marker([43.546693, -71.485798]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Laconia Express<br>17 Lexington Drive,Laconia,03246<br>Govnah Can, Safe Space Can<br>Last Updated 06-2023");
 marker502 = L.marker([43.602938, -71.453503]).addTo(Cans_Other).bindPopup("Boardwalk Bar & Grill<br>45 Endicott Street,Weirs Beach,03246<br>Govnah Can<br>Last Updated 06-2023");
 marker503 = L.marker([43.608107, -71.459919]).addTo(Cans_SafeSpace).bindPopup("M.s. Mount Washington<br>Lakeside Avenue/Po 5367,Weirs Beach,03276<br>Safe Space Can<br>Last Updated 06-2023");
 marker504 = L.marker([43.523914, -71.467433]).addTo(Cans_SafeSpace).bindPopup("Vista Foods<br>376 South Main Street,Laconia,03246<br>Safe Space Can<br>Last Updated 06-2023");
-marker505 = L.marker([43.548369, -71.461749]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Case N Keg-Laconia<br>855 Union Avenue,Laconia,03246<br>Four Rivers Red Can, Pandora's Kettle Can, Double Safe Space Can, Safe Space Can<br>Last Updated 06-2023");
+marker505 = L.marker([43.548369, -71.461749]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Case N Keg-Laconia<br>855 Union Avenue,Laconia,03246<br>Four Rivers Red Can, Pandora's Kettle Can, Double Safe Space Can, Safe Space Can<br>Last Updated 06-2023");
 marker506 = L.marker([43.258904, -71.567527]).addTo(Cans_SafeSpace).addTo(Draft_SafeSpace).bindPopup("Lemons<br>1 Beaver Meadow Road,Concord,03301<br>Safe Space Can<br>Last Updated 06-2023");
 marker507 = L.marker([43.209112, -71.536369]).addTo(Draft_SafeSpace).bindPopup("Holiday Inn-Concord<br>172 North Main Street,Concord,03301<br>Safe Space Draft<br>Last Updated 06-2023");
 marker508 = L.marker([43.191141, -71.674612]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Kolsch).addTo(Cans_Other).bindPopup("Local Baskit<br>377 Main Street,Contoocook,03229<br>Safe Space Can, Live Free Lager Can, Govnah Can, Kolsch Can, Conquered Can<br>Last Updated 06-2023");
 marker509 = L.marker([43.311339, -71.616322]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Boscawen Mart<br>157 King Street,Boscawen,03303<br>Safe Space Can, Double Safe Space Can, Conquered Can, Govnah Can<br>Last Updated 06-2023");
 marker510 = L.marker([43.217949, -71.536508]).addTo(Cans_SafeSpace).bindPopup("Courtyard By Marriott Con<br>70 Constitution Avenue,Concord,03301<br>Safe Space Can<br>Last Updated 06-2023");
-marker511 = L.marker([43.378925, -71.716730]).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Kolsch).addTo(Cans_Other).bindPopup("Crossroads Country Store<br>296 Old Turnpike Rd,Salisbury,03268<br>Safe Space Can, Kolsch Can, Conquered Can, Double Safe Space Can<br>Last Updated 06-2023");
+marker511 = L.marker([43.378925, -71.716730]).addTo(Cans_Kolsch).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Crossroads Country Store<br>296 Old Turnpike Rd,Salisbury,03268<br>Safe Space Can, Kolsch Can, Conquered Can, Double Safe Space Can<br>Last Updated 06-2023");
 marker512 = L.marker([43.290736, -71.605173]).addTo(Draft_SafeSpace).bindPopup("Alans Of Boscawen,Inc.<br>133 North Main Street,Boscawen,03303<br>Safe Space Draft<br>Last Updated 06-2023");
 marker514 = L.marker([43.288596, -71.580416]).addTo(Cans_SafeSpace).bindPopup("Xtra Mart-Concord/10015<br>1 Whitney Road,Concord,03301<br>Safe Space Can<br>Last Updated 06-2023");
 marker515 = L.marker([43.280609, -71.815393]).addTo(Draft_Kolsch).bindPopup("The Kitchen<br>15 E. Main Street,Warner,03278<br>Kolsch Draft<br>Last Updated 06-2023");
@@ -307,7 +307,7 @@ marker522 = L.marker([43.280409, -71.814953]).addTo(Cans_SafeSpace).bindPopup("W
 marker523 = L.marker([43.281798, -71.819223]).addTo(Cans_SafeSpace).bindPopup("Market Basket-Warner<br>30 Route 103 West,Warner,03278<br>Safe Space Can<br>Last Updated 06-2023");
 marker525 = L.marker([43.217285, -71.547451]).addTo(Cans_SafeSpace).bindPopup("Rite Aid/N.state 10282<br>165 North State Street,Concord,03301<br>Safe Space Can<br>Last Updated 06-2023");
 marker527 = L.marker([43.221829, -71.713729]).addTo(Draft_SafeSpace).bindPopup("Everyday Cafe Llc<br>14 Maple Street,Contoocook,03229<br>Safe Space Draft<br>Last Updated 06-2023");
-marker528 = L.marker([43.280299, -71.599517]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Village St. Discount Bev<br>308 Village Street,Penacook,03303<br>Conquered Can, Safe Space Can<br>Last Updated 06-2023");
+marker528 = L.marker([43.280299, -71.599517]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Village St. Discount Bev<br>308 Village Street,Penacook,03303<br>Conquered Can, Safe Space Can<br>Last Updated 06-2023");
 marker529 = L.marker([43.224715, -71.714146]).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("#Colonial Village<br>54 Park Avenue,Contoocook,03229<br>Conquered Can, Safe Space Can, Double Safe Space Can<br>Last Updated 06-2023");
 marker531 = L.marker([43.265343, -71.586142]).addTo(Draft_SafeSpace).bindPopup("C.c. Tomatos<br>209 Fisherville Road,Concord,03301<br>Safe Space Draft<br>Last Updated 06-2023");
 marker532 = L.marker([43.280193, -71.599100]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("River Hill Market<br>189 Carter Hill Road,Penacook,03303<br>Live Free Lager Can, Conquered Can, Safe Space Can, Pandora's Kettle Can<br>Last Updated 06-2023");
@@ -329,12 +329,12 @@ marker567 = L.marker([43.550818, -71.573801]).addTo(Draft_Other).bindPopup("Stee
 marker569 = L.marker([43.227951, -71.362443]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Epsom Circle Market<br>1921 Dover Road,Epsom,03234<br>Safe Space Can, Double Safe Space Can<br>Last Updated 06-2023");
 marker570 = L.marker([43.326117, -71.478009]).addTo(Cans_SafeSpace).bindPopup("Loudon Mart Llc<br>577 Route 106 North,Loudon,03307<br>Safe Space Can<br>Last Updated 06-2023");
 marker572 = L.marker([43.475679, -71.542791]).addTo(Cans_SafeSpace).bindPopup("Smoke & Barley<br>485 Laconia Road,Tilton,03276<br>Safe Space Can<br>Last Updated 06-2023");
-marker574 = L.marker([43.194337, -71.538594]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Kolsch).addTo(Draft_SafeSpace).bindPopup("Capital Beverages<br>3 Broadway,Concord,03301<br>Safe Space Can, Kolsch Can, Govnah Can, Live Free Lager Can, Jalapeno Cream Ale Can, Pandora's Kettle Can<br>Last Updated 06-2023");
+marker574 = L.marker([43.194337, -71.538594]).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Kolsch).addTo(Draft_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Capital Beverages<br>3 Broadway,Concord,03301<br>Safe Space Can, Kolsch Can, Govnah Can, Live Free Lager Can, Jalapeno Cream Ale Can, Pandora's Kettle Can<br>Last Updated 06-2023");
 marker575 = L.marker([43.075550, -71.468339]).addTo(Draft_SafeSpace).bindPopup("Clear The Ice Cafe Llc<br>311 West River Road,Hooksett,03106<br>Safe Space Draft<br>Last Updated 06-2023");
 marker576 = L.marker([43.048981, -71.460431]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).bindPopup("The Packie Craft Beer<br>88 West River Road,Hooksett,03106<br>Safe Space Can, Four Rivers Red Can, Govnah Can<br>Last Updated 06-2023");
-marker577 = L.marker([43.204956, -71.536631]).addTo(Draft_Kolsch).addTo(Draft_SafeSpace).addTo(Draft_Other).addTo(Draft_Kolsch).bindPopup("Penuches Ale House<br>16 Bicentennial Square,Concord,03301<br>Pandora's Kettle Draft, Kolsch Draft, Safe Space Draft<br>Last Updated 06-2023");
+marker577 = L.marker([43.204956, -71.536631]).addTo(Draft_Other).addTo(Draft_Kolsch).addTo(Draft_Kolsch).addTo(Draft_SafeSpace).bindPopup("Penuches Ale House<br>16 Bicentennial Square,Concord,03301<br>Pandora's Kettle Draft, Kolsch Draft, Safe Space Draft<br>Last Updated 06-2023");
 marker578 = L.marker([43.194913, -71.527558]).addTo(Draft_SafeSpace).bindPopup("# Common Man Concord Inc<br>25 Water Street,Concord,03301<br>Safe Space Draft<br>Last Updated 06-2023");
-marker580 = L.marker([43.235967, -71.534699]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Eastside Market<br>11 Eastman Street,Concord,03301<br>Safe Space Can, Four Rivers Red Can, Govnah Can, Pandora's Kettle Can, Double Safe Space Can<br>Last Updated 06-2023");
+marker580 = L.marker([43.235967, -71.534699]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Eastside Market<br>11 Eastman Street,Concord,03301<br>Safe Space Can, Four Rivers Red Can, Govnah Can, Pandora's Kettle Can, Double Safe Space Can<br>Last Updated 06-2023");
 marker581 = L.marker([43.204351, -71.535408]).addTo(Cans_SafeSpace).bindPopup("Wow Billiards & Bar<br>2 North Main Street,Concord,03301<br>Safe Space Can<br>Last Updated 06-2023");
 marker582 = L.marker([43.203834, -71.535207]).addTo(Cans_SafeSpace).bindPopup("Red River Theater<br>11 S Main Street,Concord,03301<br>Safe Space Can<br>Last Updated 06-2023");
 marker583 = L.marker([43.201170, -71.534887]).addTo(Draft_SafeSpace).bindPopup("Capitol Ctr For The Arts<br>44 South Main Street,Concord,03301<br>Safe Space Draft<br>Last Updated 06-2023");
@@ -343,7 +343,7 @@ marker585 = L.marker([43.210334, -71.532288]).addTo(Draft_SafeSpace).bindPopup("
 marker586 = L.marker([43.208323, -71.525054]).addTo(Draft_SafeSpace).bindPopup("El Rodeo Mexican Rest.<br>22 Loudon Road,Concord,03301<br>Safe Space Draft<br>Last Updated 06-2023");
 marker588 = L.marker([43.205180, -71.535163]).addTo(Cans_SafeSpace).bindPopup("Revival Kitchen & Bar<br>11 Depot Street,Concord,03301<br>Safe Space Can<br>Last Updated 06-2023");
 marker589 = L.marker([43.196753, -71.530507]).addTo(Cans_Other).addTo(Cans_Kolsch).addTo(Cans_SafeSpace).bindPopup("South Main Quick Stop<br>201 South Main Street,Concord,03301<br>Four Rivers Red Can, Kolsch Can, Safe Space Can<br>Last Updated 06-2023");
-marker591 = L.marker([43.180896, -71.542373]).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Flanagans Southender<br>250 South Street,Concord,03301<br>Safe Space Can, Jalapeno Cream Ale Can, Pandora's Kettle Can, Double Safe Space Can<br>Last Updated 06-2023");
+marker591 = L.marker([43.180896, -71.542373]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Flanagans Southender<br>250 South Street,Concord,03301<br>Safe Space Can, Jalapeno Cream Ale Can, Pandora's Kettle Can, Double Safe Space Can<br>Last Updated 06-2023");
 marker592 = L.marker([43.205120, -71.535619]).addTo(Draft_SafeSpace).bindPopup("Dos Amigos Burritos Llc<br>26 North Main Street,Concord,03301<br>Safe Space Draft<br>Last Updated 06-2023");
 marker593 = L.marker([43.211219, -71.491342]).addTo(Draft_SafeSpace).bindPopup("Cash Sales Jp Edes<br>65 Regional Drive,Concord,03301<br>Safe Space Draft<br>Last Updated 06-2023");
 marker594 = L.marker([43.041169, -71.469128]).addTo(Cans_SafeSpace).bindPopup("Mr Gas +<br>36 West River Road,Hooksett,03106<br>Safe Space Can<br>Last Updated 06-2023");
@@ -357,25 +357,25 @@ marker608 = L.marker([43.204089, -71.535838]).addTo(Draft_SafeSpace).bindPopup("
 marker609 = L.marker([43.177501, -71.530612]).addTo(Draft_SafeSpace).bindPopup("Concord T-Bones<br>404 South Main Street,Concord,03301<br>Safe Space Draft<br>Last Updated 06-2023");
 marker611 = L.marker([43.206401, -71.535905]).addTo(Draft_SafeSpace).bindPopup("Nh Pizza Co<br>76 North Main Street,Concord,03301<br>Safe Space Draft<br>Last Updated 06-2023");
 marker612 = L.marker([43.204956, -71.536631]).addTo(Draft_SafeSpace).bindPopup("Tio Juans/Margaritas/Con<br>1 Bicentennial Square,Concord,03301<br>Safe Space Draft<br>Last Updated 06-2023");
-marker613 = L.marker([43.205295, -71.534978]).addTo(Draft_SafeSpace).addTo(Draft_Other).bindPopup("Cheers Inc.<br>17 Depot Street,Concord,03301<br>Pandora's Kettle Draft, Safe Space Draft<br>Last Updated 06-2023");
-marker614 = L.marker([43.108564, -71.476710]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("C-Man 93S Beer Store<br>25 Springer Rd.  South,Hooksett,03106<br>Four Rivers Red Can, Pandora's Kettle Can, Govnah Can, Safe Space Can<br>Last Updated 06-2023");
+marker613 = L.marker([43.205295, -71.534978]).addTo(Draft_Other).addTo(Draft_SafeSpace).bindPopup("Cheers Inc.<br>17 Depot Street,Concord,03301<br>Pandora's Kettle Draft, Safe Space Draft<br>Last Updated 06-2023");
+marker614 = L.marker([43.108564, -71.476710]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("C-Man 93S Beer Store<br>25 Springer Rd.  South,Hooksett,03106<br>Four Rivers Red Can, Pandora's Kettle Can, Govnah Can, Safe Space Can<br>Last Updated 06-2023");
 marker616 = L.marker([43.110248, -71.474948]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("C-Man 93N Beer Store<br>530 West River Rd.  North,Hooksett,03106<br>Pandora's Kettle Can, Safe Space Can<br>Last Updated 06-2023");
 marker618 = L.marker([43.193852, -71.572395]).addTo(Draft_Other).bindPopup("<br>,,<br>Four Rivers Draft<br>Last Updated 01-0001");
 marker619 = L.marker([42.753548, -71.430215]).addTo(Draft_SafeSpace).bindPopup("T-Bones - Hudson<br>77 Lowell Road,Hudson,03051<br>Safe Space Draft<br>Last Updated 06-2023");
 marker620 = L.marker([42.922056, -71.535766]).addTo(Cans_SafeSpace).bindPopup("Hannaford #8305 - Bedford - Jenkins Rd<br>4 Jenkins Road,Bedford,03110<br>Safe Space Can<br>Last Updated 06-2023");
-marker621 = L.marker([42.932058, -72.277499]).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Monadnock Food Coop Beer<br>34 Cypress Street,Keene,03431<br>Safe Space Can, Pandora Kettle Can, Double Safe Space Can<br>Last Updated 06-2023");
+marker621 = L.marker([42.932058, -72.277499]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Monadnock Food Coop Beer<br>34 Cypress Street,Keene,03431<br>Safe Space Can, Pandora Kettle Can, Double Safe Space Can<br>Last Updated 06-2023");
 marker622 = L.marker([42.958080, -71.481046]).addTo(Cans_SafeSpace).bindPopup("Hannaford #8436 - Bedford - Kilton Rd<br>7 Kilton Rd,Bedford,03110<br>Safe Space Can<br>Last Updated 06-2023");
 marker623 = L.marker([42.777481, -71.225842]).addTo(Draft_SafeSpace).bindPopup("Copper Door - Salem<br>41 South Broadway,Salem,03079<br>Safe Space Draft<br>Last Updated 06-2023");
 marker624 = L.marker([43.106394, -71.901230]).addTo(Draft_SafeSpace).addTo(Draft_Other).bindPopup("Angus Lea Golf Course<br>126 West Main Street,Hillsborough,03244<br>Safe Space Draft, Pandora Kettle Draft<br>Last Updated 06-2023");
 marker625 = L.marker([43.021158, -71.601093]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Sully's Superette<br>10 N. Mast Road,Goffstown,03045<br>Gov'nah Can, Four Rivers Can, Safe Space Can<br>Last Updated 06-2023");
 marker627 = L.marker([42.840786, -71.705804]).addTo(Cans_SafeSpace).bindPopup("Market Basket #57 Milford<br>21 Jones Street,Milford,03055<br>Safe Space Can<br>Last Updated 06-2023");
-marker628 = L.marker([42.771906, -71.470171]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Jeannotte's Market<br>2 Courtland Street,Nashua,03060<br>Safe Space Can, Gov'nah Can<br>Last Updated 06-2023");
+marker628 = L.marker([42.771906, -71.470171]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Jeannotte's Market<br>2 Courtland Street,Nashua,03060<br>Safe Space Can, Gov'nah Can<br>Last Updated 06-2023");
 marker629 = L.marker([42.832529, -72.062973]).addTo(Draft_SafeSpace).addTo(Draft_Kolsch).bindPopup("Shattuck Golf Club And Dublin Road Taproom<br>53 Dublin Road,Jaffrey,03452<br>Safe Space Draft, Kolsch Draft<br>Last Updated 06-2023");
 marker630 = L.marker([42.924406, -72.294065]).addTo(Draft_SafeSpace).bindPopup("Brickhouse Pizza & Wings<br>101 Key Road,Keene,03431<br>Safe Space Draft<br>Last Updated 06-2023");
 marker632 = L.marker([42.850128, -71.493985]).addTo(Draft_SafeSpace).addTo(Draft_Other).bindPopup("Thirsty Moose<br>360 Daniel Webster Highway Unit 107,Merrimack,03054<br>Safe Space Draft, Four Rivers Draft<br>Last Updated 06-2023");
 marker633 = L.marker([42.918450, -71.545040]).addTo(Draft_SafeSpace).bindPopup("Murphy's Taproom And Carriage House<br>393 Route 101,Bedford,03110<br>Safe Space Draft<br>Last Updated 06-2023");
 marker636 = L.marker([42.954267, -71.477845]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Whole Foods - Bedford - Store<br>121 South River Rd,Bedford,03110<br>Safe Space Can, Gov'nah Can<br>Last Updated 06-2023");
-marker637 = L.marker([42.805775, -71.263942]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Prime Butcher Windham<br>58 Range Road,Windham,03087<br>Safe Space Can, Gov'nah Can<br>Last Updated 06-2023");
+marker637 = L.marker([42.805775, -71.263942]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Prime Butcher Windham<br>58 Range Road,Windham,03087<br>Safe Space Can, Gov'nah Can<br>Last Updated 06-2023");
 marker638 = L.marker([43.676360, -72.260317]).addTo(Cans_Kolsch).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Lebanon Co-Op<br>12 Centerra Prkwy-Suite75,Lebanon,03766<br>Kolsch Can, Gov'nah Can, Safe Space Can, Honey Dew Can<br>Last Updated 06-2023");
 marker639 = L.marker([42.760208, -71.498762]).addTo(Cans_SafeSpace).bindPopup("Hannaford #8186 - Nashua<br>175 Coliseum Avenue,Nashua,03063<br>Safe Space Can<br>Last Updated 06-2023");
 marker640 = L.marker([42.866282, -71.343663]).addTo(Cans_SafeSpace).bindPopup("Hannaford #8185 - Londery<br>6 Hampton Drive,Londonderry,03053<br>Safe Space Can<br>Last Updated 06-2023");
@@ -385,7 +385,7 @@ marker646 = L.marker([42.825129, -71.624875]).addTo(Draft_SafeSpace).bindPopup("
 marker647 = L.marker([43.641624, -72.146271]).addTo(Draft_Kolsch).bindPopup("Kitchen 56<br>56 Main Street,Enfield,03748<br>Kolsch Draft<br>Last Updated 06-2023");
 marker648 = L.marker([42.813821, -71.636742]).addTo(Draft_SafeSpace).bindPopup("Hampshire Hills S&F Club<br>50 Emerson Road,Milford,03055<br>Safe Space Draft<br>Last Updated 06-2023");
 marker649 = L.marker([42.708452, -71.457811]).addTo(Cans_SafeSpace).bindPopup("The Craft Beer Cellar Nashua<br>108d Spit Brook Rd,Nashua,03062<br>Safe Space Can<br>Last Updated 06-2023");
-marker650 = L.marker([42.911791, -71.556481]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Scas Worthen Llc<br>470 Route 101,Bedford,03110<br>Safe Space Can, Double Safe Space Can<br>Last Updated 06-2023");
+marker650 = L.marker([42.911791, -71.556481]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Scas Worthen Llc<br>470 Route 101,Bedford,03110<br>Safe Space Can, Double Safe Space Can<br>Last Updated 06-2023");
 marker651 = L.marker([43.418012, -71.932122]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Park N Go<br>18 Elkins Road,Wilmot,03287<br>Safe Space Can, Gov'nah Can<br>Last Updated 06-2023");
 marker652 = L.marker([42.777170, -71.227554]).addTo(Cans_SafeSpace).bindPopup("Market Basket #84 Salem<br>69 Central Street,Salem,03079<br>Safe Space Can<br>Last Updated 06-2023");
 marker653 = L.marker([42.970071, -71.508407]).addTo(Cans_SafeSpace).bindPopup("Market Basket #71 Bedford<br>539 Donald Street,Bedford,03110<br>Safe Space Can<br>Last Updated 06-2023");
@@ -398,34 +398,34 @@ marker659 = L.marker([43.422968, -71.999347]).addTo(Cans_SafeSpace).bindPopup("J
 marker660 = L.marker([42.805023, -71.297211]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Indian Rock Market & Smoke Shop<br>30 Indian Rock Road,Windham,03087<br>Safe Space Can, Double Safe Space Can<br>Last Updated 06-2023");
 marker663 = L.marker([42.892778, -71.142716]).addTo(Cans_SafeSpace).bindPopup("Hannaford #8190 - Hampstead<br>305 Sandown Road,Hampstead,03826<br>Safe Space Can<br>Last Updated 06-2023");
 marker664 = L.marker([42.775293, -71.443612]).addTo(Cans_SafeSpace).bindPopup("Hannaford #8183 - Hudson<br>77 Derry Rd Route 10,Hudson,03051<br>Safe Space Can<br>Last Updated 06-2023");
-marker665 = L.marker([42.901913, -71.336649]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Hannaford #8016 - Derry<br>35 Manchester Road,Derry,03038<br>Safe Space Can, Gov'nah Can, Four Rivers Can<br>Last Updated 06-2023");
+marker665 = L.marker([42.901913, -71.336649]).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Hannaford #8016 - Derry<br>35 Manchester Road,Derry,03038<br>Safe Space Can, Gov'nah Can, Four Rivers Can<br>Last Updated 06-2023");
 marker667 = L.marker([42.948484, -72.320129]).addTo(Cans_SafeSpace).bindPopup("Big Deal - Keene<br>650 Park Avenue,Keene,03431<br>Safe Space Can<br>Last Updated 06-2023");
-marker668 = L.marker([42.850128, -71.493985]).addTo(Cans_Kolsch).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Beer & Wine Nation - Merrimack<br>360 Dw Highway,Merrimack,03054<br>Safe Space Can, Gov'nah Can, Four Rivers Can, Kolsch Can, Jalepeno Cream Ale Can<br>Last Updated 06-2023");
+marker668 = L.marker([42.850128, -71.493985]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Kolsch).addTo(Cans_Other).bindPopup("Beer & Wine Nation - Merrimack<br>360 Dw Highway,Merrimack,03054<br>Safe Space Can, Gov'nah Can, Four Rivers Can, Kolsch Can, Jalepeno Cream Ale Can<br>Last Updated 06-2023");
 marker670 = L.marker([42.860697, -71.170891]).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Prime Butcher Of Hampstead<br>201 Route 111,Hampstead,03841<br>Live Light Can, Gov'nah Can<br>Last Updated 06-2023");
 marker671 = L.marker([43.628814, -72.320849]).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Discount Beverage King W. Leb<br>9 Interchange Drive,West Lebanon,03784<br>Four Rivers Can, Double Safe Space Can<br>Last Updated 06-2023");
 marker673 = L.marker([42.938955, -71.525936]).addTo(Cans_SafeSpace).bindPopup("Wicked-Good Butchah<br>209 Route 101,Bedford,03110<br>Safe Space Can<br>Last Updated 06-2023");
 marker674 = L.marker([42.780308, -71.495423]).addTo(Cans_SafeSpace).bindPopup("Whole Foods Market - Nashua - Store<br>255 Amherst St,Nashua,03063<br>Safe Space Can<br>Last Updated 06-2023");
 marker675 = L.marker([43.004288, -71.930780]).addTo(Cans_SafeSpace).bindPopup("Washington General Store<br>Route 31,Washington,03280<br>Safe Space Can<br>Last Updated 06-2023");
-marker677 = L.marker([42.839472, -71.654079]).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Kolsch).bindPopup("Sun Mart<br>71 Mont Vernon Street,Milford,03055<br>Safe Space Can, Kolsch Can, Double Safe Space Can<br>Last Updated 06-2023");
+marker677 = L.marker([42.839472, -71.654079]).addTo(Cans_SafeSpace).addTo(Cans_Kolsch).addTo(Cans_Other).bindPopup("Sun Mart<br>71 Mont Vernon Street,Milford,03055<br>Safe Space Can, Kolsch Can, Double Safe Space Can<br>Last Updated 06-2023");
 marker679 = L.marker([42.879543, -71.783586]).addTo(Cans_SafeSpace).bindPopup("Rk Village Store<br>151 Forest Road,Lyndeborough,03082<br>Safe Space Can<br>Last Updated 06-2023");
 marker680 = L.marker([42.842094, -71.712849]).addTo(Cans_SafeSpace).bindPopup("Penguin Mart Llc<br>738 Elm Street,Milford,03055<br>Safe Space Can<br>Last Updated 06-2023");
 marker681 = L.marker([43.321146, -72.037210]).addTo(Cans_Other).bindPopup("Newbury Quick Stop<br>958 Rte 103,Newbury,03255<br>Gov'nah Can<br>Last Updated 06-2023");
-marker682 = L.marker([43.189716, -71.828267]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("New Harvester Market Inc<br>16 Bradford Rd,Henniker,03242<br>Safe Space Can, Double Safe Space Can<br>Last Updated 06-2023");
+marker682 = L.marker([43.189716, -71.828267]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("New Harvester Market Inc<br>16 Bradford Rd,Henniker,03242<br>Safe Space Can, Double Safe Space Can<br>Last Updated 06-2023");
 marker684 = L.marker([43.363473, -72.319088]).addTo(Cans_SafeSpace).bindPopup("Market Basket #53 Claremnt<br>345 Washington Street,Claremont,03743<br>Safe Space Can<br>Last Updated 06-2023");
 marker685 = L.marker([42.787911, -72.033810]).addTo(Cans_SafeSpace).bindPopup("Market Basket #47 Rindge<br>360 Us-202,Rindge,03461<br>Safe Space Can<br>Last Updated 06-2023");
 marker686 = L.marker([42.884434, -71.457927]).addTo(Cans_SafeSpace).bindPopup("Litchfield Food Mart<br>496 Charles Bancroft Hwy,Litchfield,03052<br>Safe Space Can<br>Last Updated 06-2023");
 marker687 = L.marker([43.436524, -71.822365]).addTo(Cans_SafeSpace).bindPopup("Jj's Mart & Deli<br>193 Main Street,Andover,03216<br>Safe Space Can<br>Last Updated 06-2023");
-marker688 = L.marker([43.642973, -72.150418]).addTo(Cans_Kolsch).addTo(Cans_Other).bindPopup("Jake's Market And Deli- Enfield<br>297 Us Route 4,Enfield,03748<br>Kolsch Can, Double Safe Space Can<br>Last Updated 06-2023");
+marker688 = L.marker([43.642973, -72.150418]).addTo(Cans_Other).addTo(Cans_Kolsch).bindPopup("Jake's Market And Deli- Enfield<br>297 Us Route 4,Enfield,03748<br>Kolsch Can, Double Safe Space Can<br>Last Updated 06-2023");
 marker690 = L.marker([42.997431, -71.511885]).addTo(Cans_SafeSpace).bindPopup("Hannaford #8311 - Goffstown<br>605 Mast Road,Goffstown,03102<br>Safe Space Can<br>Last Updated 06-2023");
-marker694 = L.marker([42.788566, -71.514204]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Beer Store (The)<br>433 Amherst Street,Nashua,03063<br>Safe Space Can, Four Rivers Can, Live Light Can, Gov'nah Can, Double Safe Space Can<br>Last Updated 06-2023");
-marker696 = L.marker([42.914295, -71.436087]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).bindPopup("House Sales<br>46 Pettengill Road,Londonderry,03053<br>Safe Space Can, Pandora Kettle Can, Live Light Can, Jalepeno Cream Ale Can, Four Rivers Can, BA Belgian Tpl MiniCans<br>Last Updated 06-2023");
+marker694 = L.marker([42.788566, -71.514204]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).bindPopup("Beer Store (The)<br>433 Amherst Street,Nashua,03063<br>Safe Space Can, Four Rivers Can, Live Light Can, Gov'nah Can, Double Safe Space Can<br>Last Updated 06-2023");
+marker696 = L.marker([42.914295, -71.436087]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("House Sales<br>46 Pettengill Road,Londonderry,03053<br>Safe Space Can, Pandora Kettle Can, Live Light Can, Jalepeno Cream Ale Can, Four Rivers Can, BA Belgian Tpl MiniCans<br>Last Updated 06-2023");
 marker697 = L.marker([42.780308, -71.495423]).addTo(Draft_SafeSpace).bindPopup("Whole Foods Market - Nashua - Bar<br>255 Amherst St,Nashua,03063<br>Safe Space Draft<br>Last Updated 06-2023");
 marker699 = L.marker([42.916407, -71.374389]).addTo(Draft_Other).bindPopup("Twins Smoke Shop<br>80 Perkins Rd,Londonderry,03053<br>Four Rivers Draft<br>Last Updated 06-2023");
 marker700 = L.marker([42.921442, -72.294179]).addTo(Draft_SafeSpace).bindPopup("Tempesta's<br>401winchester St,Keene,03431<br>Safe Space Draft<br>Last Updated 06-2023");
 marker703 = L.marker([43.591890, -72.111077]).addTo(Cans_Kolsch).bindPopup("Proctor's General Store<br>1084 Route 4a,Enfield,03748<br>Kolsch Can<br>Last Updated 06-2023");
 marker705 = L.marker([42.836091, -71.648679]).addTo(Draft_SafeSpace).bindPopup("Olde Kilkenny Pub<br>30 Middle St,Milford,03055<br>Safe Space Draft<br>Last Updated 06-2023");
 marker712 = L.marker([42.699918, -71.420057]).addTo(Cans_Other).bindPopup("Ayottes & Smokin' Joes Premium Cigars<br>100 River Road,Hudson,03051<br>Gov'nah Can<br>Last Updated 06-2023");
-marker715 = L.marker([42.894457, -71.294613]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Other).bindPopup("50 East Derry Road Convenience<br>50 East Derry Road,Derry,03038<br>Safe Space Can, Jalepeno Cream Ale Can, Gov'nah Can<br>Last Updated 06-2023");
+marker715 = L.marker([42.894457, -71.294613]).addTo(Cans_Other).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("50 East Derry Road Convenience<br>50 East Derry Road,Derry,03038<br>Safe Space Can, Jalepeno Cream Ale Can, Gov'nah Can<br>Last Updated 06-2023");
 marker717 = L.marker([42.843457, -71.300111]).addTo(Cans_SafeSpace).bindPopup("Windham Variety Stores<br>132 North Lowell Road,Windham,03087<br>Safe Space Can<br>Last Updated 06-2023");
 marker720 = L.marker([42.864703, -71.348240]).addTo(Cans_SafeSpace).bindPopup("Seven Elev #30292 - Londondery - Nashua Rd<br>37 Nashua Road,Londonderry,03053<br>Safe Space Can<br>Last Updated 06-2023");
 marker722 = L.marker([43.504734, -72.131977]).addTo(Cans_SafeSpace).bindPopup("Rum Brook Market<br>249 Route 10 N,Grantham,03753<br>Safe Space Can<br>Last Updated 06-2023");
@@ -437,11 +437,11 @@ marker733 = L.marker([42.732921, -71.423814]).addTo(Cans_SafeSpace).bindPopup("M
 marker734 = L.marker([42.822593, -71.106787]).addTo(Cans_SafeSpace).bindPopup("Market Basket #25 Plaistow<br>34 Plaistow Road,Plaistow,03865<br>Safe Space Can<br>Last Updated 06-2023");
 marker735 = L.marker([42.945964, -71.477383]).addTo(Cans_SafeSpace).bindPopup("Manchester Country Club<br>180 South River Rd,Bedford,03110<br>Safe Space Can<br>Last Updated 06-2023");
 marker736 = L.marker([42.850843, -71.358918]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Lazy Dog Beer Shoppe Llc<br>27 Buttrick Rd,Londonderry,03053<br>Safe Space Can, Double Safe Space Can<br>Last Updated 06-2023");
-marker737 = L.marker([43.043304, -71.681194]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Lanctots Grocery<br>421 S Stark Hwy,Weare,03281<br>Safe Space Can, Gov'nah Can<br>Last Updated 06-2023");
+marker737 = L.marker([43.043304, -71.681194]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Lanctots Grocery<br>421 S Stark Hwy,Weare,03281<br>Safe Space Can, Gov'nah Can<br>Last Updated 06-2023");
 marker740 = L.marker([42.999329, -71.516546]).addTo(Cans_SafeSpace).bindPopup("K2 Mobil Mart<br>566 Mast Road,Goffstown,03045<br>Safe Space Can<br>Last Updated 06-2023");
 marker742 = L.marker([42.731516, -71.425948]).addTo(Cans_Other).bindPopup("Hudson Brews<br>6 Flagstone Dr,Hudson,03051<br>Pandora Kettle Can<br>Last Updated 06-2023");
 marker743 = L.marker([42.830784, -71.751104]).addTo(Cans_Kolsch).bindPopup("Hbtsotr Llc<br>362 Gibbons Highway,Wilton,03086<br>Kolsch Can<br>Last Updated 06-2023");
-marker744 = L.marker([43.698268, -72.280630]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Hanover Consumer Coop<br>45 So. Park St. Box 633,Hanover,03755<br>Safe Space Can, Honey Dew Can<br>Last Updated 06-2023");
+marker744 = L.marker([43.698268, -72.280630]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Hanover Consumer Coop<br>45 So. Park St. Box 633,Hanover,03755<br>Safe Space Can, Honey Dew Can<br>Last Updated 06-2023");
 marker745 = L.marker([42.725568, -71.317905]).addTo(Cans_SafeSpace).bindPopup("Hannaford #8015 - Pelham<br>150 Bridge Street,Pelham,03076<br>Safe Space Can<br>Last Updated 06-2023");
 marker746 = L.marker([43.301337, -72.148208]).addTo(Cans_Other).bindPopup("Goshen Country Store<br>7 Brook Rd,Goshen,03752<br>Gov'nah Can<br>Last Updated 06-2023");
 marker748 = L.marker([42.766650, -72.035196]).addTo(Cans_SafeSpace).bindPopup("Emmas 321<br>377 Us-202,Rindge,03461<br>Safe Space Can<br>Last Updated 06-2023");
@@ -458,7 +458,7 @@ marker768 = L.marker([42.760174, -71.464273]).addTo(Draft_SafeSpace).bindPopup("
 marker770 = L.marker([43.676528, -72.262508]).addTo(Cans_SafeSpace).bindPopup("Snax<br>18 Centerra Parkway,Lebanon,03766<br>Safe Space Can<br>Last Updated 06-2023");
 marker771 = L.marker([43.048823, -71.724782]).addTo(Draft_SafeSpace).bindPopup("Snackshot Catering<br>158 Deering Center Road,Weare,03281<br>Safe Space Draft<br>Last Updated 06-2023");
 marker772 = L.marker([42.835109, -71.654334]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Snack Corner<br>38 Elm Street,Milford,03055<br>Safe Space Can, Gov'nah Can<br>Last Updated 06-2023");
-marker773 = L.marker([42.872122, -71.954436]).addTo(Cans_Other).addTo(Cans_SafeSpace).bindPopup("Shaw's #4694 - Peterboro<br>141 Dublin Road,Peterborough,03458<br>Safe Space Can, Gov'nah Can<br>Last Updated 06-2023");
+marker773 = L.marker([42.872122, -71.954436]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Shaw's #4694 - Peterboro<br>141 Dublin Road,Peterborough,03458<br>Safe Space Can, Gov'nah Can<br>Last Updated 06-2023");
 marker775 = L.marker([43.357606, -72.175766]).addTo(Cans_SafeSpace).bindPopup("Shaw's #4534 - Newport<br>48 John Stark Highway,Newport,03773<br>Safe Space Can<br>Last Updated 06-2023");
 marker776 = L.marker([43.110040, -71.915496]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Shaw's #4514 - Hillsboro<br>276 West Main St,Hillsborough,03244<br>Safe Space Can, Gov'nah Can<br>Last Updated 06-2023");
 marker777 = L.marker([42.815517, -71.103491]).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Shaw's #3669 - Plaistow<br>4 Plaistow Road,Plaistow,03865<br>Safe Space Can, Gov'nah Can<br>Last Updated 06-2023");
@@ -498,16 +498,16 @@ marker836 = L.marker([42.972724, -71.982598]).addTo(Cans_SafeSpace).bindPopup("H
 marker840 = L.marker([43.641283, -72.147604]).addTo(Cans_Other).bindPopup("Georges Ag Super<br>66 Main Street,Enfield,03748<br>Four Rivers Can<br>Last Updated 06-2023");
 marker841 = L.marker([42.863480, -71.353304]).addTo(Draft_SafeSpace).bindPopup("Game Changer Sports Bar & Grill<br>4 Orchard View Drive,Londonderry,03053<br>Safe Space Draft<br>Last Updated 06-2023");
 marker842 = L.marker([42.816444, -71.102238]).addTo(Cans_SafeSpace).bindPopup("Food Plus<br>5 Plaistow Road-Rte 125,Plaistow,03865<br>Safe Space Can<br>Last Updated 06-2023");
-marker845 = L.marker([42.917481, -72.153993]).addTo(Draft_Other).addTo(Draft_SafeSpace).bindPopup("Dublin Smoke Haus<br>13 Main Street,Dublin,03444<br>Safe Space Draft, Conquered IPA Draft<br>Last Updated 06-2023");
+marker845 = L.marker([42.917481, -72.153993]).addTo(Draft_SafeSpace).addTo(Draft_Other).bindPopup("Dublin Smoke Haus<br>13 Main Street,Dublin,03444<br>Safe Space Draft, Conquered IPA Draft<br>Last Updated 06-2023");
 marker847 = L.marker([42.950149, -71.872836]).addTo(Cans_Other).bindPopup("Delay's Harvester Market<br>783 Forest Road,Greenfield,03047<br>Double Safe Space Can<br>Last Updated 06-2023");
 marker848 = L.marker([43.526156, -71.862622]).addTo(Cans_SafeSpace).bindPopup("Danbury Country Store<br>705 Us Route 4,Danbury,03230<br>Safe Space Can<br>Last Updated 06-2023");
-marker849 = L.marker([42.740302, -71.795350]).addTo(Cans_Other).addTo(Cans_SafeSpace).addTo(Draft_SafeSpace).bindPopup("Country Corner Mile<br>768 Fitchburg Road,Greenville,03048<br>Safe Space Can, Double Safe Space Can<br>Last Updated 06-2023");
+marker849 = L.marker([42.740302, -71.795350]).addTo(Cans_SafeSpace).addTo(Draft_SafeSpace).addTo(Cans_Other).bindPopup("Country Corner Mile<br>768 Fitchburg Road,Greenville,03048<br>Safe Space Can, Double Safe Space Can<br>Last Updated 06-2023");
 marker854 = L.marker([43.718377, -72.273516]).addTo(Cans_Other).bindPopup("Coop Community Store<br>43 Lyme Rd,Hanover,03755<br>Honey Dew Can<br>Last Updated 06-2023");
 marker857 = L.marker([42.756304, -71.674172]).addTo(Draft_SafeSpace).bindPopup("Chrysanthi's<br>204 Route 13,Brookline,03033<br>Safe Space Draft<br>Last Updated 06-2023");
 marker864 = L.marker([43.266020, -71.956458]).addTo(Cans_SafeSpace).bindPopup("Bradford Market<br>2201 Rte 103,Bradford,03220<br>Safe Space Can<br>Last Updated 06-2023");
 marker866 = L.marker([42.737177, -71.482809]).addTo(Cans_SafeSpace).bindPopup("Boston Billiard Club<br>55 Northeastern Blvd.,Nashua,03062<br>Safe Space Can<br>Last Updated 06-2023");
 marker871 = L.marker([42.758332, -71.211896]).addTo(Cans_SafeSpace).bindPopup("Beer Store Llc (The) - Salem<br>291 South Broadway,Salem,03079<br>Safe Space Can<br>Last Updated 06-2023");
-marker873 = L.marker([43.039305, -71.669769]).addTo(Cans_Kolsch).addTo(Cans_SafeSpace).addTo(Cans_Other).bindPopup("Autumn Hill Campground<br>285 South Stark Highway,Weare,03281<br>Safe Space Can, Pandora Kettle Can, Kolsch Can<br>Last Updated 06-2023");
+marker873 = L.marker([43.039305, -71.669769]).addTo(Cans_SafeSpace).addTo(Cans_Other).addTo(Cans_Kolsch).bindPopup("Autumn Hill Campground<br>285 South Stark Highway,Weare,03281<br>Safe Space Can, Pandora Kettle Can, Kolsch Can<br>Last Updated 06-2023");
 marker876 = L.marker([42.777997, -71.496587]).addTo(Cans_SafeSpace).bindPopup("Alltown Fresh #2756 - Nashua<br>242 Amherst St,Nashua,03063<br>Safe Space Can<br>Last Updated 06-2023");
 marker878 = L.marker([42.949915, -72.115371]).addTo(Draft_SafeSpace).bindPopup("Aldworth Hilltop Kitchen - Catering<br>184 Aldworth Manor Road,Harrisville,03450<br>Safe Space Draft<br>Last Updated 06-2023");
 marker879 = L.marker([42.873101, -71.337670]).addTo(Cans_SafeSpace).bindPopup("A And S Foodmart<br>12-14 Nashua Rd,Londonderry,03053<br>Safe Space Can<br>Last Updated 06-2023");
