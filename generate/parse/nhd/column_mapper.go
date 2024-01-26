@@ -79,29 +79,19 @@ func (self columnMapper) getStore(row *[]string) data.Store {
 	}
 }
 
-func beerSuffix(beerNameRaw *string) (data.BeerType, string) {
-
-	if strings.HasSuffix(*beerNameRaw, "16CN") {
-		beerName := strings.TrimSuffix(*beerNameRaw, "16CN")
+func beerTypeAndName(beerNameRaw *string) (data.BeerType, string) {
+	if strings.HasPrefix(*beerNameRaw, "6/4PK 16OZ CAN ") {
+		beerName := strings.TrimPrefix(*beerNameRaw, "6/4PK 16OZ CAN ")
 		return data.Can, beerName
-	} else if strings.HasSuffix(*beerNameRaw, "MINI 4PC") {
-		beerName := strings.TrimSuffix(*beerNameRaw, "MINI 4PC")
+	} else if strings.HasPrefix(*beerNameRaw, "6/4PK 8OZ CAN ") {
+		beerName := strings.TrimPrefix(*beerNameRaw, "6/4PK 8OZ CAN ")
 		return data.MiniCan, beerName
-	} else if strings.HasSuffix(*beerNameRaw, "MIN 4PC") {
-		beerName := strings.TrimSuffix(*beerNameRaw, "MIN 4PC")
-		return data.MiniCan, beerName
-	} else if strings.HasSuffix(*beerNameRaw, "16C") {
-		beerName := strings.TrimSuffix(*beerNameRaw, "16C")
-		return data.Can, beerName
-	} else if strings.HasSuffix(*beerNameRaw, "1/2") {
-		beerName := strings.TrimSuffix(*beerNameRaw, "1/2")
+	} else if strings.HasPrefix(*beerNameRaw, "1/6 BBL 5.17G ") {
+		beerName := strings.TrimPrefix(*beerNameRaw, "1/6 BBL 5.17G ")
+		return data.Sixtel, beerName
+	} else if strings.HasPrefix(*beerNameRaw, "1/2 BBL 15.5G ") {
+		beerName := strings.TrimPrefix(*beerNameRaw, "1/2 BBL 15.5G ")
 		return data.Half, beerName
-	} else if strings.HasSuffix(*beerNameRaw, "1/6") {
-		beerName := strings.TrimSuffix(*beerNameRaw, "1/6")
-		return data.Sixtel, beerName
-	} else if strings.HasSuffix(*beerNameRaw, "1/6B") {
-		beerName := strings.TrimSuffix(*beerNameRaw, "1/6B")
-		return data.Sixtel, beerName
 	} else {
 		fmt.Println("NAME:", *beerNameRaw)
 		panic("Unknown beer type.  Check beer name suffixes")
@@ -130,7 +120,7 @@ func (self columnMapper) getBeer(row *[]string) data.Beer {
 		}
 	}
 
-	beerType, beerName := beerSuffix(&beerName)
+	beerType, beerName := beerTypeAndName(&beerName)
 	beerName = strings.TrimSpace(beerName)
 
 	return data.Beer{

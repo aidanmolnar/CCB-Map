@@ -37,10 +37,13 @@ func GetGeoLocation(location Location) (GeoLocation, error) {
 
 // Converts a location to a googlemaps geocoding query url
 func (self Location) toGoogleQuery() string {
+	// Remove extraneous address information
+	address, _, _ := strings.Cut(self.Address, "&")
+
 	return fmt.Sprintf("%saddress=%s&key=%s",
 		"https://maps.googleapis.com/maps/api/geocode/json?",
 		strings.Replace(
-			strings.Title(strings.ToLower(self.Address))+","+strings.Title(strings.ToLower(self.City))+"+NH"+",USA",
+			strings.Title(strings.ToLower(address))+","+strings.Title(strings.ToLower(self.City))+"+NH"+",USA",
 			" ", "+", -1),
 		ApiKey)
 }

@@ -47,8 +47,8 @@ func newColumnMapper(data *[][]string) columnMapper {
 				continue
 			}
 
-			// Check that this date is the most recent that is more than a month old
-			if startDate.After(latest) && startDate.Before(time.Now().Add(-time.Hour*24*30)) {
+			// Check that this date is the most recent that is more than a half of a month old
+			if startDate.After(latest) && startDate.Before(time.Now().Add(-time.Hour*24*15)) {
 				latest = startDate
 				quanityCol = i
 			}
