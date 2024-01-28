@@ -52,7 +52,7 @@ func GetStoresFromSalesSheet(fileName string) []data.Store {
 		}
 	}
 
-	// Add the store if its not empty
+	// Add the last store
 	if len(store.Beers) != 0 {
 		stores = append(stores, store)
 	}

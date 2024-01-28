@@ -11,7 +11,7 @@ import (
 
 // Sheet constants
 const dateRowId = 0
-const headerRowId = 3
+const headerRowId = 1
 
 // Quanity column constants
 const dateRowPrefix = "Case Equiv"
