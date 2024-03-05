@@ -10,11 +10,12 @@ const ignoreValue = "Total"
 
 func readWholeExcelFile(fileName string, sheetName string) ([][]string, error) {
 	f, err := excelize.OpenFile(fileName)
-	defer f.Close()
 
 	if err != nil {
 		return nil, err
 	}
+
+	defer f.Close()
 
 	data, err := f.GetRows(sheetName)
 	if err != nil {

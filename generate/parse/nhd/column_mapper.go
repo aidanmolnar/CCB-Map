@@ -38,59 +38,59 @@ type columnMapper struct {
 	lastUpdated time.Time
 }
 
-func (self columnMapper) getQuantity(row *[]string) string {
-	return getIfExists(row, self.quantity)
+func (mapper columnMapper) getQuantity(row *[]string) string {
+	return getIfExists(row, mapper.quantity)
 }
 
-func (self columnMapper) getStoreName(row *[]string) string {
-	return getIfExists(row, self.storeName)
+func (mapper columnMapper) getStoreName(row *[]string) string {
+	return getIfExists(row, mapper.storeName)
 }
 
-func (self columnMapper) getAddress(row *[]string) string {
-	return getIfExists(row, self.address)
+func (mapper columnMapper) getAddress(row *[]string) string {
+	return getIfExists(row, mapper.address)
 }
 
-func (self columnMapper) getCity(row *[]string) string {
-	return getIfExists(row, self.city)
+func (mapper columnMapper) getCity(row *[]string) string {
+	return getIfExists(row, mapper.city)
 }
 
-func (self columnMapper) getZipcode(row *[]string) string {
-	return getIfExists(row, self.zipcode)
+func (mapper columnMapper) getZipcode(row *[]string) string {
+	return getIfExists(row, mapper.zipcode)
 }
 
-func (self columnMapper) getBeerName(row *[]string) string {
-	return getIfExists(row, self.beerName)
+func (mapper columnMapper) getBeerName(row *[]string) string {
+	return getIfExists(row, mapper.beerName)
 }
 
-func (self columnMapper) getLocation(row *[]string) geocoding.Location {
+func (mapper columnMapper) getLocation(row *[]string) geocoding.Location {
 	return geocoding.Location{
-		Address: self.getAddress(row),
-		City:    self.getCity(row),
-		Zipcode: self.getZipcode(row),
+		Address: mapper.getAddress(row),
+		City:    mapper.getCity(row),
+		Zipcode: mapper.getZipcode(row),
 	}
 }
 
-func (self columnMapper) getStore(row *[]string) data.Store {
+func (mapper columnMapper) getStore(row *[]string) data.Store {
 	return data.Store{
 		Distributor: data.NHD,
-		Name:        self.getStoreName(row),
-		Location:    self.getLocation(row),
-		LastUpdated: self.lastUpdated,
+		Name:        mapper.getStoreName(row),
+		Location:    mapper.getLocation(row),
+		LastUpdated: mapper.lastUpdated,
 	}
 }
 
 func beerTypeAndName(beerNameRaw *string) (data.BeerType, string) {
-	if strings.HasPrefix(*beerNameRaw, "6/4PK 16OZ CAN ") {
-		beerName := strings.TrimPrefix(*beerNameRaw, "6/4PK 16OZ CAN ")
+	if strings.HasSuffix(*beerNameRaw, "6/4PK 16OZ CAN") {
+		beerName := strings.TrimSuffix(*beerNameRaw, "6/4PK 16OZ CAN")
 		return data.Can, beerName
-	} else if strings.HasPrefix(*beerNameRaw, "6/4PK 8OZ CAN ") {
-		beerName := strings.TrimPrefix(*beerNameRaw, "6/4PK 8OZ CAN ")
+	} else if strings.HasSuffix(*beerNameRaw, "6/4PK 8OZ CAN") {
+		beerName := strings.TrimSuffix(*beerNameRaw, "6/4PK 8OZ CAN")
 		return data.MiniCan, beerName
-	} else if strings.HasPrefix(*beerNameRaw, "1/6 BBL 5.17G ") {
-		beerName := strings.TrimPrefix(*beerNameRaw, "1/6 BBL 5.17G ")
+	} else if strings.HasSuffix(*beerNameRaw, "1/6 BBL 5.17G") {
+		beerName := strings.TrimSuffix(*beerNameRaw, "1/6 BBL 5.17G")
 		return data.Sixtel, beerName
-	} else if strings.HasPrefix(*beerNameRaw, "1/2 BBL 15.5G ") {
-		beerName := strings.TrimPrefix(*beerNameRaw, "1/2 BBL 15.5G ")
+	} else if strings.HasSuffix(*beerNameRaw, "1/2 BBL 15.5G") {
+		beerName := strings.TrimSuffix(*beerNameRaw, "1/2 BBL 15.5G")
 		return data.Half, beerName
 	} else {
 		fmt.Println("NAME:", *beerNameRaw)
@@ -98,9 +98,9 @@ func beerTypeAndName(beerNameRaw *string) (data.BeerType, string) {
 	}
 }
 
-func (self columnMapper) getBeer(row *[]string) data.Beer {
-	beerNameRaw := self.getBeerName(row)
-	quantityStr := self.getQuantity(row)
+func (mapper columnMapper) getBeer(row *[]string) data.Beer {
+	beerNameRaw := mapper.getBeerName(row)
+	quantityStr := mapper.getQuantity(row)
 
 	quantity, err := strconv.ParseFloat(quantityStr, 64)
 
@@ -139,16 +139,16 @@ func getIfExists(row *[]string, index int) string {
 }
 
 func newColumnMapper(data *[][]string) columnMapper {
-	self := columnMapper{}
+	mapper := columnMapper{}
 
-	self.getQuanityCol(data)
-	self.getOtherColumns(data)
+	mapper.getQuanityCol(data)
+	mapper.getOtherColumns(data)
 
-	return self
+	return mapper
 }
 
 // Gets the column of the sales report that has the most recent data
-func (self *columnMapper) getQuanityCol(data *[][]string) {
+func (mapper *columnMapper) getQuanityCol(data *[][]string) {
 	latest := time.Unix(0, 0)
 	quanityCol := 0
 
@@ -166,7 +166,8 @@ func (self *columnMapper) getQuanityCol(data *[][]string) {
 				panic("Could not find column for latest month. String parsing constants may need to be adjusted.")
 			}
 
-			if startDate.After(latest) {
+			// Check that this date is the most recent that is more than a half of a month old
+			if startDate.After(latest) && startDate.Before(time.Now().Add(-time.Hour*24*15)) {
 				latest = startDate
 				quanityCol = i
 			}
@@ -174,32 +175,32 @@ func (self *columnMapper) getQuanityCol(data *[][]string) {
 		}
 	}
 
-	self.lastUpdated = latest
-	self.quantity = quanityCol
+	mapper.lastUpdated = latest
+	mapper.quantity = quanityCol
 }
 
-func (self *columnMapper) getOtherColumns(data *[][]string) {
+func (mapper *columnMapper) getOtherColumns(data *[][]string) {
 
 	// TODO: Handle case where none of these is found?
 	for i, cell := range (*data)[headerRowId] {
 		if cell == storeNameHeader {
-			self.storeName = i
+			mapper.storeName = i
 		}
 
 		if cell == addressHeader {
-			self.address = i
+			mapper.address = i
 		}
 
 		if cell == cityHeader {
-			self.city = i
+			mapper.city = i
 		}
 
 		if cell == zipcodeHeader {
-			self.zipcode = i
+			mapper.zipcode = i
 		}
 
 		if cell == beerNameHeader {
-			self.beerName = i
+			mapper.beerName = i
 		}
 	}
 }
