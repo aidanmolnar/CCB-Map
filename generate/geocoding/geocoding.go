@@ -39,12 +39,13 @@ func GetGeoLocation(location Location) (GeoLocation, error) {
 func (self Location) toGoogleQuery() string {
 	// Remove extraneous address information
 	address, _, _ := strings.Cut(self.Address, "&")
+	address, _, _ = strings.Cut(address, "#")
 
 	return fmt.Sprintf("%saddress=%s&key=%s",
 		"https://maps.googleapis.com/maps/api/geocode/json?",
-		strings.Replace(
+		strings.ReplaceAll(
 			strings.Title(strings.ToLower(address))+","+strings.Title(strings.ToLower(self.City))+"+NH"+",USA",
-			" ", "+", -1),
+			" ", "+"),
 		ApiKey)
 }
 

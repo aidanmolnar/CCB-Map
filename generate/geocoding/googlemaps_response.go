@@ -52,7 +52,7 @@ type GoogleMapsResponse struct {
 
 func (response GoogleMapsResponse) GetGeolocation(zipcode string) (GeoLocation, error) {
 	if response.Status != goodRequestStatus {
-		panic(fmt.Errorf("request was denied: %s", response.ErrorMessage))
+		return GeoLocation{}, fmt.Errorf("request was denied: %s", response.ErrorMessage)
 	}
 
 	geos := []GeoLocation{}
