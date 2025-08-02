@@ -120,6 +120,9 @@ func beerSuffix(beerNameRaw *string) (data.BeerType, string) {
 	} else if strings.HasSuffix(*beerNameRaw, "CN 16 4pk") {
 		beerName := strings.TrimSuffix(*beerNameRaw, "CN 16 4pk")
 		return data.Can, beerName
+	} else if strings.HasSuffix(*beerNameRaw, "16oz 4pk") {
+		beerName := strings.TrimSuffix(*beerNameRaw, "16oz 4pk")
+		return data.Can, beerName
 	} else if strings.HasSuffix(*beerNameRaw, "Mini CN 8oz 4pk") {
 		beerName := strings.TrimSuffix(*beerNameRaw, "Mini CN 8oz 4pk")
 		return data.MiniCan, beerName
