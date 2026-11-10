@@ -13,6 +13,7 @@ type BeerType = string
 const (
 	Can     BeerType = "Can"
 	MiniCan          = "MiniCans"
+	TallCan          = "TallCans"
 	Sixtel           = "Draft"
 	Half             = "Draft"
 )

@@ -118,7 +118,7 @@ func writeMap(layerNames []string, stores []data.Store) {
 }
 
 func beerToLayer(beer data.Beer) string {
-	if beer.BeerType == data.Can || beer.BeerType == data.MiniCan {
+	if beer.BeerType == data.Can || beer.BeerType == data.MiniCan || beer.BeerType == data.TallCan {
 		return "Cans_" + rawToVariable(beer.LayerName)
 	} else {
 		return "Draft_" + rawToVariable(beer.LayerName)

@@ -83,6 +83,12 @@ func beerTypeAndName(beerNameRaw *string) (data.BeerType, string) {
 	if strings.HasSuffix(*beerNameRaw, "6/4PK 16OZ CAN") {
 		beerName := strings.TrimSuffix(*beerNameRaw, "6/4PK 16OZ CAN")
 		return data.Can, beerName
+	} else if strings.HasSuffix(*beerNameRaw, "6/4PK 16OZ") {
+		beerName := strings.TrimSuffix(*beerNameRaw, "6/4PK 16OZ")
+		return data.Can, beerName
+	} else if strings.HasSuffix(*beerNameRaw, "6/4PK 16OZ CA") {
+		beerName := strings.TrimSuffix(*beerNameRaw, "6/4PK 16OZ CA")
+		return data.Can, beerName
 	} else if strings.HasSuffix(*beerNameRaw, "6/4PK 8OZ CAN") {
 		beerName := strings.TrimSuffix(*beerNameRaw, "6/4PK 8OZ CAN")
 		return data.MiniCan, beerName
@@ -92,6 +98,9 @@ func beerTypeAndName(beerNameRaw *string) (data.BeerType, string) {
 	} else if strings.HasSuffix(*beerNameRaw, "1/2 BBL 15.5G") {
 		beerName := strings.TrimSuffix(*beerNameRaw, "1/2 BBL 15.5G")
 		return data.Half, beerName
+	} else if strings.HasSuffix(*beerNameRaw, "12PK 19.2OZ C") {
+		beerName := strings.TrimSuffix(*beerNameRaw, "12PK 19.2OZ C")
+		return data.TallCan, beerName
 	} else {
 		fmt.Println("NAME:", *beerNameRaw)
 		panic("Unknown beer type.  Check beer name suffixes")
